@@ -14,7 +14,7 @@ function App() {
 
   const getPokemons = () => {
     axios
-      .get("https://pokeapi.co/api/v2/pokemon?limit=100")
+      .get("https://pokeapi.co/api/v2/pokemon?limit=50")
       .then((res) => {
         setPokemons(res.data.results)
         console.log(res)

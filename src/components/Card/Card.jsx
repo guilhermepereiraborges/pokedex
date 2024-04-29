@@ -7,6 +7,7 @@ export default function Card(props) {
   const pokemon = props.pokemon;
 
   const [pokemonInfo, setPokemonInfo] = useState({});
+  const [pokemonType, setPokemonType] = useState({});
 
   useEffect(() => {
     getPokemonInfo();
@@ -17,7 +18,6 @@ export default function Card(props) {
       .get(pokemon.url)
       .then((res) => {
         setPokemonInfo(res.data);
-        console.log(res);
       })
       .catch((err) => console.log(err));
   };
@@ -38,21 +38,23 @@ export default function Card(props) {
     }
   };
 
+  const firstType = pokemonInfo.types && pokemonInfo.types.length > 0 ? `--${pokemonInfo.types[0].type.name}` : null;
+console.log(firstType)
+
   return (
-    <div className="card">
+    <div className="card" style={{ backgroundColor: `var(${firstType})` }}>
       <div className="card-ls">
         <h1>{pokemon.name}</h1>
 
         {pokemonInfo.types && (
           <div className="tags">
-            {pokemonInfo.types.map((type) => ( <Tag type={type} /> ))}
+            {pokemonInfo.types.map((type) => (
+              <Tag type={type} />
+            ))}
           </div>
         )}
-      
       </div>
-      <div className="card-rs">
-        {renderPokemonImage()}
-      </div>
+      <div className="card-rs">{renderPokemonImage()}</div>
     </div>
   );
 }

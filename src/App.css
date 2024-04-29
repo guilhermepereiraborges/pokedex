@@ -1,7 +1,28 @@
+#root {
+  --fire: #fe9c57;
+  --water: #5091d7;
+  --grass: #63ba59;
+  --electric: #f5d33a;
+  --ground: #d8774e;
+  --flying: #8babe5;
+  --ice: #72cebe;
+  --rock: #c4b68c;
+  --stell: #5790a2;
+  --normal: #9197a0;
+  --fighting: #ce406a;
+  --ghost: #516baa;
+  --dark: #5d5364;
+  --poison: #b865d2;
+  --dragon: #106cc1;
+  --fairy: #ec8fe8;
+  --bug: #90c12f;
+  --psychic: #f6727a;
+}
+
 .cards {
-  display: flex; /* ou display: grid; */
-  flex-wrap: wrap; /* ou grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); */
-  justify-content: space-between; /* ou justify-content: center; */
+  display: flex;
+  flex-wrap: wrap; 
+  justify-content: space-between; 
 }
 
 .card {
@@ -10,12 +31,13 @@
   color: white;
   width: 320px;
   height: 150px;
-  background-color: #ffd86f;
+  /* background-color: #ffd86f; */
   display: flex;
   overflow: hidden;
   text-align: center;
   padding: 20px;
-  margin-bottom: 2rem;
+  /* margin-bottom: 2rem; */
+  margin: 7.9px;
   border-radius: 30px;
   -webkit-box-shadow: 0px 0px 22px 0px rgba(0, 0, 0, 0.36);
   -moz-box-shadow: 0px 0px 22px 0px rgba(0, 0, 0, 0.36);
@@ -23,7 +45,7 @@
 }
 
 .card:last-child {
-  margin-bottom: 0; /* Remove a margem inferior do último card */
+  margin-bottom: 0; 
 }
 
 .card-ls,
@@ -34,7 +56,7 @@
 }
 
 .card-ls {
-  align-items: flex-start; /* Alinha os itens à esquerda */
+  align-items: flex-start;
 }
 
 .card-rs img {
