@@ -1,26 +1,35 @@
-// import ReactDOM from 'react-dom'
-// import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 
 import "./App.css";
 
 import Card from "./components/Card/Card";
 
 function App() {
+  const [pokemons, setPokemons] = useState([]);
 
-  const pokemon = {
-    name : "pikachu",
-    image : "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/25.svg"
-  }
+  useEffect(() => {
+    getPokemons();
+  }, []);
+
+  const getPokemons = () => {
+    axios
+      .get("https://pokeapi.co/api/v2/pokemon?limit=100")
+      .then((res) => {
+        setPokemons(res.data.results)
+        console.log(res)
+      })
+      .catch((err) => console.log(err));
+  };
 
   return (
     <>
-      <Card pokemon={pokemon} />
+      <div className="cards">
+        {pokemons.map(function (pokemon) {
+          return <Card pokemon={pokemon} />
+        })}
+      </div>
     </>
-    // <BrowserRouter>
-    //   <Routes>
-    //     <Route path="/" element={<Home />}></Route>
-    //   </Routes>
-    // </BrowserRouter>
   );
 }
 
